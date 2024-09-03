@@ -10,9 +10,14 @@ def index(request):
 
         drink1 = request.POST.get('drink1', 0)
         drink2 = request.POST.get('drink2', 0)
-        status = request.POST.get('status', 'False') == 'True'
+        status = request.POST.get('status', 'false')
 
-        print(f"Received data - drink1: {drink1}, drink2: {drink2}, status: {status}")
+        if status == 'true':
+            status = True
+        else:
+            status = False
+
+        print(f"Received data - drink1: {drink1}, drink2: {drink2}, status: {status} {settings.status}")
 
         if settings.drink1 != drink1:
             print(f"Drink1 changed from {settings.drink1} to {drink1}")

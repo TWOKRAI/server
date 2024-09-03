@@ -26,12 +26,15 @@
                     <input type="number" id="drink2" name="drink2" required value="{{ settings.drink2 }}">
                     <span>мл</span>
                 </div>
-                <button type="button" id="toggleButton" class="toggleButton">{{ settings.status|yesno:"Выключить,Включить" }}</button>
+                <div class="input-group">
+                    <label class="switch">
+                        <input type="checkbox" id="statusSwitch" name="status" {% if settings.status %}checked{% endif %}>
+                        <span class="slider"></span>
+                    </label>
+                    <span id="statusText">{{ settings.status|yesno:"ВКЛЮЧЕН,ВЫКЛЮЧЕН" }}</span>
+                </div>
             </form>
-            <div class="status">
-                <p>Состояние наливатора: <span id="fillerStatus">{{ settings.status|yesno:"ВКЛЮЧЕН,ВЫКЛЮЧЕН" }}</span></p>
-                <a href="{% url 'settings' %}"><button id="settingsButton">Настройки</button></a>
-            </div>
+            <a href="{% url 'settings' %}"><button id="settingsButton">Настройки</button></a>
         </main>
     </div>
     <script src="{% static 'js/scripts2.js' %}"></script>

@@ -1,16 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     const drink1Input = document.getElementById('drink1');
     const drink2Input = document.getElementById('drink2');
-    const toggleButton = document.getElementById('toggleButton');
+    const statusSwitch = document.getElementById('statusSwitch');
+    const statusText = document.getElementById('statusText');
     const statusInput = document.createElement('input');
     statusInput.type = 'hidden';
     statusInput.name = 'status';
     document.getElementById('drinkForm').appendChild(statusInput);
-
-    // Установим начальное состояние кнопки и статуса
-    const initialStatus = document.getElementById('fillerStatus').textContent === 'ВКЛЮЧЕН';
-    statusInput.value = initialStatus;
-    toggleButton.textContent = initialStatus ? 'Выключить' : 'Включить';
 
     function sendData(formData) {
         fetch('', {
@@ -29,10 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateStatus(status) {
-        const fillerStatus = document.getElementById('fillerStatus');
-        fillerStatus.textContent = status ? 'ВКЛЮЧЕН' : 'ВЫКЛЮЧЕН';
-        toggleButton.textContent = status ? 'Выключить' : 'Включить';
-        fillerStatus.style.color = status ? 'green' : 'red';
+        statusText.textContent = status ? 'ВКЛЮЧЕН' : 'ВЫКЛЮЧЕН';
+        statusText.style.color = status ? 'green' : 'red';
+        console.log('statusSwitch.checked:', statusSwitch.checked, status);
+        statusSwitch.checked = status;
         statusInput.value = status; // Обновим значение скрытого поля
     }
 
@@ -51,12 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
             sendData(formData);
         });
 
-        toggleButton.addEventListener('click', function() {
-            const currentStatus = statusInput.value === 'true';
-            const newStatus = !currentStatus;
-            statusInput.value = newStatus;
-            console.log('Status changed:', newStatus);
+        statusSwitch.addEventListener('change', function() {
+            console.log('statusSwitch changed:', statusSwitch.checked);
             const formData = new FormData(document.getElementById('drinkForm'));
+            formData.append('status', statusSwitch.checked);
             sendData(formData);
         });
     } else {
