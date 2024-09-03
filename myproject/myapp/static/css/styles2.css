@@ -22,7 +22,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 40px; /* Увеличен отступ после картинки */
+    margin-bottom: 30px; /* Увеличен отступ после картинки */
 }
 
 .header h1 {
@@ -33,12 +33,12 @@ body {
 .header img {
     width: 280px; /* Уменьшено на 15% */
     height: 40px; /* Уменьшено на 15% */
-    margin-top: 20px;
+    margin-top: 26px;
 }
 
 .main h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 19px;
+    margin-bottom: 25px;
 }
 
 .input-group {
@@ -54,15 +54,17 @@ body {
 }
 
 .input-group input {
-    width: 50%; /* Уменьшена ширина в два раза */
-    padding: 10px;
+    width: 33%; /* Уменьшена ширина в два раза */
+    padding: 5px; /* Увеличена высота в полтора раза */
+    text-align: center;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 9px;
     box-sizing: border-box;
+    font-size: 21px; /* Увеличен размер шрифта */
 }
 
 .input-group span {
-    margin-left: 10px;
+    margin-left: 12px;
 }
 
 button {
@@ -80,6 +82,10 @@ button {
 
 button:hover {
     background: #084c94; /* Убран градиент */
+}
+
+.toggleButton {
+    margin-top: 20px; /* Добавлен отступ сверху */
 }
 
 .todo-lists {
@@ -110,5 +116,10 @@ button:hover {
 }
 
 .status button {
-    margin-top: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#fillerStatus {
+    color: black; /* Состояние наливатора остается черным */
 }
